@@ -88,22 +88,20 @@ public class JobData {
     /* start of my new content */
     public static ArrayList<HashMap<String, String>> findByValue(String value) {
 
-        // load data, if not already loaded
         loadData();
 
         ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
 
         for (HashMap<String, String> row : allJobs) {
             for (Map.Entry<String, String> column : row.entrySet()) {
-                String aVal = column.getValue();
-                if (aVal.contains(value)) {
+                String aVal = column.getValue().toUpperCase();
+                if (aVal.contains(value.toUpperCase())) {
                     if(!jobs.contains(row)) {
                         jobs.add(row);
                     }
                 }
             }
         }
-
         return jobs;
     }
     /* end of my content */
